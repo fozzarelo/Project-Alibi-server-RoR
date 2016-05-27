@@ -19,6 +19,8 @@ module API
 
     helpers do
       def authenticated
+        puts params[:token]
+        puts Rails.application.secrets.api['token'].to_s
         params[:token].eql? Rails.application.secrets.api['token'].to_s
       end
 
