@@ -15,8 +15,11 @@ module API
         end
 
         post :signin do
-          user = User.find_by_email(params[:email])
-          return user if user && user.authenticate(params[:password])
+          u = User.find_by_email(params[:email])
+          contacts  = u.contactings.map{|c| [c.nickname, c.contact.email]}
+          puts Hash[contacts]
+          user = {username: u.username, email: u.email, contacts: Hash[contacts]}
+          return user if u && u.authenticate(params[:password])
         end
 
         desc 'Sign up a user'
