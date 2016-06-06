@@ -8,6 +8,6 @@ class Footprint < ApplicationMailer
   #  end
   def send_footprint(msg)
     @msg = msg
-    mail(to @msg.target_email, subject: "#{@msg.user.username} sends a footprint")
+    mail(to: @msg.target_email, subject: "#{@msg.user.username} was spotted")
   end
 end

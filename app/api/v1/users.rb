@@ -27,16 +27,14 @@ module API
           requires :userEmail, type: String
           requires :targetEmail, type: String
         end
-        # TODO, Start here!. Now create and send that email!!!!!!!!!
         post :sendMessage do
-          u = User.find_by_email(params[:UserEmail])
-          msg = Message.new(user: u, target_email: params[:targetEmail], address: params[:address])
-          if msg.save
-            #MessageMailer.send_footprint(msg).deliver_now 
+          u = User.find_by_email(params[:userEmail])
+          @msg = Message.new(user: u, target_email: params[:targetEmail], address: params[:address])
+          if @msg.save
+            Footprint.send_footprint(@msg).deliver_now
           end
-          byebug
           message = {timeSent: '00:00'}
-          return address
+          return message
         end
       end
 

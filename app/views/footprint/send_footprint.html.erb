@@ -1,13 +1,12 @@
-<p>Hello <%= @owner.first_name %>,</p>
 
-<p>You got an answer on your question:</p>
+<p><%= @msg.user.username %> was spotted</p>
 
-<p>Question title: <%= @question.title %></p>
+<p>Location: <%= @msg.address %></p>
 
-<p>The answer: <%= @answer.body %></p>
+<p>Address: <%= @msg.created_at.to_s(:short) %></p>
 
-<%= link_to "Click here to view the question", question_url(@question) %>
+<!-- # <%= link_to "Click here to view in a browser", message_url(@msg) %> -->
 
-<p>Then n there,</p>
+<p>Then n there..</p>
 
-<p>Footprint</p>
+<p>Footprints</p>
