@@ -24,9 +24,15 @@ module ParseAlternative
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
-    config.autoload_paths << Rails.root.join('lib')
-    config.autoload_paths << Rails.root.join('lib', 'mixins')
-    config.paths.add "lib/api", glob: "**/*.rb"
-    config.autoload_paths += Dir["#{Rails.root}/lib/api/*"]
+    #  config.autoload_paths << Rails.root.join('lib')
+    #  config.autoload_paths << Rails.root.join('lib', 'mixins')
+    #  config.paths.add "lib/api", glob: "**/*.rb"
+    #  config.autoload_paths += Dir["#{Rails.root}/lib/api/*"]
+
+     config.autoload_paths << Rails.root.join('app')
+     config.autoload_paths << Rails.root.join('app', 'mixins')
+     config.paths.add "app/api", glob: "**/*.rb"
+     config.autoload_paths += Dir["#{Rails.root}/app/api/*"]
+
   end
 end

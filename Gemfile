@@ -26,6 +26,8 @@ gem 'dotenv'
 # API
 gem 'grape', '>= 0.14.0'
 gem 'grape-middleware-logger'
+# Let grape deal with params
+gem 'hashie-forbidden_attributes'
 
 #Display
 gem 'sass-rails', '~> 5.0'
