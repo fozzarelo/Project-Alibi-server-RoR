@@ -3,10 +3,12 @@
 
 <p>Location: <%= @msg.address %></p>
 
-<p>Address: <%= @msg.created_at.to_s(:short) %></p>
+<p>Date-Time: <%= @msg.created_at.to_s(:short) %></p>
 
-<!-- # <%= link_to "Click here to view in a browser", message_url(@msg) %> -->
+<% if (@msg.picture != 'null')  %>
+  <img src="<%= @msg.picture %>" alt="No image available" height="300" width="180">
+<% end  %>
 
-<p>Then n there..</p>
+<p>Then and there..</p>
 
 <p>Footprints</p>

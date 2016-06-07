@@ -26,10 +26,13 @@ module API
           requires :address, type: String
           requires :userEmail, type: String
           requires :targetEmail, type: String
+          requires :lat, type: String
+          requires :lon, type: String
+          requires :photoLink, type: String
         end
         post :sendMessage do
           u = User.find_by_email(params[:userEmail])
-          @msg = Message.new(user: u, target_email: params[:targetEmail], address: params[:address])
+          @msg = Message.new(user: u, target_email: params[:targetEmail], address: params[:address], picture: params[:photoLink])
           if @msg.save
             Footprint.send_footprint(@msg).deliver_now
           end
@@ -46,6 +49,7 @@ module API
         end
 
         post :signin do
+          byebug
           u = User.find_by_email(params[:email])
           if u && u.authenticate(params[:password]) && u.has_account == true
             contacts  = u.contactings.map{|c| [c.nickname, c.contact.email]}
