@@ -34,9 +34,9 @@ module API
           u = User.find_by_email(params[:userEmail])
           @msg = Message.new(user: u, target_email: params[:targetEmail], address: params[:address], picture: params[:photoLink])
           if @msg.save
-            Footprint.send_footprint(@msg).deliver_now
+            Footprint.send_footprint(@msg).deliver_later
           end
-          message = {timeSent: '00:00'}
+          message = {timeSent: @msg.created_at}
           return message
         end
       end
@@ -49,7 +49,6 @@ module API
         end
 
         post :signin do
-          byebug
           u = User.find_by_email(params[:email])
           if u && u.authenticate(params[:password]) && u.has_account == true
             contacts  = u.contactings.map{|c| [c.nickname, c.contact.email]}
