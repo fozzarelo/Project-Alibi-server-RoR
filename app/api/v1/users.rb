@@ -39,6 +39,15 @@ module API
           message = {timeSent: @msg.created_at}
           return message
         end
+
+        desc 'List of messages'
+        params do
+          requires :email, type: String
+        end
+
+        post :getMessages do
+          return User.find_by_email(params['email']).messages
+        end
       end
 
       resource :users do

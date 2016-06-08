@@ -10,4 +10,6 @@ class User < ActiveRecord::Base
   has_many :inverse_contactings, :class_name => "Contacting", :foreign_key => "contact_id"
   has_many :inverse_contacts, :through => :inverse_contactings, :source => :user
 
+  has_many :messages, dependent: :nullify
+
 end

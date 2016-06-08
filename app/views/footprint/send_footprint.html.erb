@@ -1,6 +1,13 @@
-<% map_image = "https://maps.googleapis.com/maps/api/staticmap?center=#{@msg.address}&zoom=15&size=400x400&
-markers=color:blue%7Clabel:@%7C#{@msg.address}&key=AIzaSyBqoqRQ4aaIMDFt41ciKEpDXY7HNxF6dNY" %>
-<!-- TODO Remove api key  -->
+<%
+#TODO Remove api key's!!
+map_image =
+"https://maps.googleapis.com/maps/api/staticmap?center=#{@msg.address}&zoom=15&size=400x400&
+markers=color:blue%7Clabel:@%7C#{@msg.address}&key=AIzaSyBqoqRQ4aaIMDFt41ciKEpDXY7HNxF6dNY"
+
+logo_image = "https://s3-us-west-2.amazonaws.com/foot-print-pictures/Footprint-icon.png?X-Amz-Date=20160608T015708Z&X-Amz-Expires=300&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Signature=70f03d590d4044b52500ea69868c5791f74219f8fe7ed5646fdb7c11bad90ffd&X-Amz-Credential=ASIAJ7MXHSQBC3DYNVVQ/20160608/us-west-2/s3/aws4_request&X-Amz-SignedHeaders=Host&x-amz-security-token=FQoDYXdzEMP//////////wEaDJdoRYZKN/fBLh5RIyLHAU/4980hLaDcTJoQHu90ZwJzUzbBojISX3WKdl97QYjSmqr/imEj7rlwqBRrs/yCvj5rqzt7i5JSy5S4pdU4nVqMGz8tnWF0B5mh2p7jDczVw9OKQFvD8U9Zyy3smucXUUzQ0r7bxd9iPgwYwkQoveAeaz/d5n6IxKKC3ACdeLXLJlXfVhaczikujM4n48f%2BU46nzC%2BPCQYnSZJrs7ojTs622L0Edyg9vf/uRag1n0LdB9Rs7zbc0gKwUhOJTXnM6MMqRX4k4H0o8KDcugU%3D"
+
+%>
+
 
 <table style="width:80%; border: 1px solid #F7F2EF;">
   <tr>
@@ -33,7 +40,7 @@ markers=color:blue%7Clabel:@%7C#{@msg.address}&key=AIzaSyBqoqRQ4aaIMDFt41ciKEpDX
   </tr>
   <tr>
     <td align="center">
-      <img style="width: 100px; height: 100px;" src="http://freeiconbox.com/icon/256/22799.png">
+      <img style="width: 100px; height: 100px;" src="#{logo_image}">
     </td>
   </tr>
 </table>
