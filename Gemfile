@@ -60,6 +60,8 @@ gem "quiet_assets"
 gem 'delayed_job_active_record'
 gem "delayed_job_web"
 
+gem "mini_magick"
+
 group :production do
   gem 'pg'
   gem "rails_12factor"

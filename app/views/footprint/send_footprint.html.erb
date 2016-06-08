@@ -1,14 +1,39 @@
+<% map_image = "https://maps.googleapis.com/maps/api/staticmap?center=#{@msg.address}&zoom=15&size=400x400&
+markers=color:blue%7Clabel:@%7C#{@msg.address}&key=AIzaSyBqoqRQ4aaIMDFt41ciKEpDXY7HNxF6dNY" %>
+<!-- TODO Remove api key  -->
 
-<p><%= @msg.user.username %> was spotted</p>
-
-<p>Location: <%= @msg.address %></p>
-
-<p>Date-Time: <%= @msg.created_at.to_s(:short) %></p>
-
-<% if (@msg.picture != 'null')  %>
-  <img src="<%= @msg.picture %>" alt="No image available" height="300" width="180">
-<% end  %>
-
-<p>Then and there..</p>
-
-<p>Footprints</p>
+<table style="width:80%; border: 1px solid #F7F2EF;">
+  <tr>
+    <td colspan="2" align="center" style="font-family: Arial, Helvetica, sans-serif;">
+      <p style="font-size: 20px;"><%= @msg.user.username %>  sends a footprint</p>
+      <p>Location: <%= @msg.address %></p>
+      <p>Timestamp: <%= @msg.created_at.to_s(:short) %></p>
+    </td>
+  </tr>
+  <tr style="valign:middle" >
+    <td>
+      <div>
+        <a href="https://www.google.ca/maps/@#{@msg.address}">
+          <img  style="border-radius: 50px; margin-left:30px"
+                src="<%= map_image %>" alt="map_image"
+          >
+        </a>
+        <img style="width:400px; max-height:400px; border-radius:50px; object-fit:cover; padding-left:30px"
+               src="<%= @msg.picture %>"
+               alt="picture_image"
+        >
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" style="font-family: Arial, Helvetica, sans-serif; font-size: 20px;">
+      <p>Then & There..</p>
+      <p>Footprints team</p>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img style="width: 100px; height: 100px;" src="http://freeiconbox.com/icon/256/22799.png">
+    </td>
+  </tr>
+</table>
