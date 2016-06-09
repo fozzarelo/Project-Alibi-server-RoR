@@ -46,7 +46,10 @@ module API
         end
 
         post :getMessages do
-          return User.find_by_email(params['email']).messages
+          sent_messages = User.find_by_email(params['email']).messages
+          rec_messages = Message.find_by_target_email(params['email'])
+          messages = {sentMessages: sent_messages, recMessages: rec_messages}
+          return messages
         end
       end
 
