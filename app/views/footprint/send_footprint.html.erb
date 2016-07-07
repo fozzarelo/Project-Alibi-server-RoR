@@ -1,8 +1,8 @@
 <%
-#TODO Remove api key's!!
+#TODO Remove api key's!! <-- Done.. now test them
 map_image =
 "https://maps.googleapis.com/maps/api/staticmap?center=#{@msg.address}&zoom=15&size=400x400&
-markers=color:blue%7Clabel:@%7C#{@msg.address}&key=AIzaSyBqoqRQ4aaIMDFt41ciKEpDXY7HNxF6dNY"
+markers=color:blue%7Clabel:@%7C#{@msg.address}&key=#{ENV["gmaps_api_key"]}"
 
 logo_image = "http://cliparts.co/cliparts/kiM/KnR/kiMKnRART.jpg"
 %>
@@ -11,7 +11,7 @@ logo_image = "http://cliparts.co/cliparts/kiM/KnR/kiMKnRART.jpg"
 <table style="width:80%; border: 1px solid #F7F2EF;">
   <tr>
     <td colspan="2" align="center" style="font-family: Arial, Helvetica, sans-serif;">
-      <p style="font-size: 20px;"><%= @msg.user.username %>  sends a pin</p>
+      <p style="font-size: 20px;"><%= @msg.user.username %>  has an abili </p>
       <p>Location: <%= @msg.address %></p>
       <p>Timestamp: <%= @msg.created_at.to_s(:short) %></p>
     </td>
@@ -37,7 +37,7 @@ logo_image = "http://cliparts.co/cliparts/kiM/KnR/kiMKnRART.jpg"
   <tr>
     <td align="center" style="font-family: Arial, Helvetica, sans-serif; font-size: 20px;">
       <p>Then & There..</p>
-      <p>The Pinheads</p>
+      <p>Alibis</p>
     </td>
   </tr>
   <tr>
