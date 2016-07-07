@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   resources :messages
   resources :users
+  resources :sessions, only: [:new, :create] do
+    delete :destroy, on: :collection
+  end
 
   mount API::Root => '/'
 

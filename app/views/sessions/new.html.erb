@@ -1,0 +1,15 @@
+<h1>Log In</h1>
+
+<%= form_tag sessions_path do %>
+<div class="form-inputs">
+    <%= label_tag :admin_email %>
+    <%= text_field_tag :email %>
+  </div>
+<div class="form-inputs">
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+  </div>
+  <div class="form-actions">
+    <%= submit_tag "Log In" %>
+  </div>
+<% end %>
