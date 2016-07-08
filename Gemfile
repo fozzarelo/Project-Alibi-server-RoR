@@ -62,6 +62,8 @@ gem "delayed_job_web"
 
 gem "mini_magick"
 
+gem 'faker', github: "stympy/faker"
+
 group :production do
   gem 'pg'
   gem "rails_12factor"
@@ -79,7 +81,6 @@ group :development, :test do
   gem 'interactive_editor'
   gem 'hirb'
   gem 'cowsay'
-  gem 'faker', github: "stympy/faker"
   gem 'rails-erd'
   gem 'letter_opener'
 

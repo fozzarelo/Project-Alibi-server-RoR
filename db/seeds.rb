@@ -11,9 +11,9 @@ User.create( {username: 'Evelina',
               has_account: true,
               is_admin: false})
 
-User.create( {username: 'Dan Pinto',
-              email: 'fozzarelo@gmail.com',
-              password: 'q',
+User.create( {username: 'admin',
+              email: 'admin',
+              password: 'quinoa',
               has_account: true,
               is_admin: true})
 

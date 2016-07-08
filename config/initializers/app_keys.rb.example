@@ -2,4 +2,5 @@ ENV["email_user_name"] = "PUT USER NAME HERE"
 ENV["email_password"]  = "PUT PASSWORD HERE"
 
 ENV["gmaps_api_key"] = "PUT GMAPS API KEY HERE"
-ENV["api_token"] = "$%4466yYtotoQ109"
+
+ENV["admin_password"] = "PUT YOU ADMIN PASSWORD HERE"
