@@ -46,12 +46,37 @@ module API
         end
 
         post :getMessages do
-          sent_messages = User.find_by_email(params['email']).messages
-          rec_messages = Message.find_by_target_email(params['email'])
-          messages = {sentMessages: sent_messages, recMessages: rec_messages}
+          sent_messages = User.find_by_email(params['email']).messages.order('created_at').limit(5)
+          rec_messages = Message.where('target_email =?', params['email']).order('created_at').limit(5)
+          messages = [
+                        {
+                          cat: 'Sent',
+                          id: 1,
+                          msgs: sent_messages.map { |msg| { msg: {
+                                                              name: msg.target_email,
+                                                              timeSent: msg.created_at.strftime("%d %b. %Y"),
+                                                              location: msg.address,
+                                                              md5: msg.target_email
+                                                              }
+                                                            }
+                                                    }
+                        },{
+                          cat: 'Recieved',
+                          id: 2,
+                          msgs: rec_messages.map { |msg| { msg:  {
+                                                              name: msg.user.username,
+                                                              timeSent: msg.created_at.strftime("%d %b. %Y"),
+                                                              location: msg.address,
+                                                              md5: msg.user.email
+                                                              }
+                                                            }
+                                                  }
+                        }
+                      ]
           return messages
         end
       end
+
 
       resource :users do
         desc 'Sign in the user'
