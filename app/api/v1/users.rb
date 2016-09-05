@@ -46,11 +46,21 @@ module API
         end
 
         post :getMessages do
-          sent_messages = User.find_by_email(params['email']).messages.order('created_at').limit(5)
-          rec_messages = Message.where('target_email =?', params['email']).order('created_at').limit(5)
+          if User.find_by_email(params['email'])
+            sent_messages = User.find_by_email(params['email']).messages.order('created_at').limit(5)
+          else
+            sent_messages = []
+          end
+
+          if Message.where('target_email =?', params['email'])
+            rec_messages = Message.where('target_email =?', params['email']).order('created_at').limit(5)
+          else
+            rec_messages = []
+          end
+
           messages = [
                         {
-                          cat: 'Sent',
+                          cat: 'Sent:',
                           id: 1,
                           msgs: sent_messages.map { |msg| { msg: {
                                                               name: msg.target_email,
@@ -61,7 +71,7 @@ module API
                                                             }
                                                     }
                         },{
-                          cat: 'Recieved',
+                          cat: 'Recieved:',
                           id: 2,
                           msgs: rec_messages.map { |msg| { msg:  {
                                                               name: msg.user.username,
