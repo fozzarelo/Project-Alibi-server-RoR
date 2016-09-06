@@ -18,4 +18,3 @@
 
 # Keys
 /config/initializers/app_keys.rb
-.env.development
