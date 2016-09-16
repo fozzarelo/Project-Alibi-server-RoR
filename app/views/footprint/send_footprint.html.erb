@@ -1,5 +1,4 @@
 <%
-#TODO Remove api key's!! <-- Done.. now test them
 map_image =
 "https://maps.googleapis.com/maps/api/staticmap?center=#{@msg.address}&zoom=15&size=400x400&
 markers=color:blue%7Clabel:@%7C#{@msg.address}&key=#{ENV["gmaps_api_key"]}"
